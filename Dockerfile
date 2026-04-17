@@ -17,4 +17,5 @@ ENV HERMES_HOME=/opt/data
 RUN mkdir -p /opt/data/{cron,sessions,logs,hooks,memories,skills}
 RUN chmod +x docker/entrypoint.sh
 
-CMD ["python", "-c", "from hermes_cli.gateway import run_gateway; run_gateway()"]
+RUN chmod +x railway_start.sh
+CMD ["bash", "railway_start.sh"]
