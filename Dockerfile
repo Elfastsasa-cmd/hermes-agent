@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY . .
 
-RUN pip install --no-cache-dir -e ".[core]" || \
-    pip install --no-cache-dir -e "." 
+RUN pip install --no-cache-dir -e ".[all]" --timeout 300 
 
 CMD ["python", "-m", "hermes_cli.gateway"]
