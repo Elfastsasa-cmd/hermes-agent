@@ -13,4 +13,8 @@ COPY . .
 
 RUN pip install --no-cache-dir -e ".[all]" --timeout 300 
 
-CMD ["python", "-m", "hermes_cli.gateway"]
+ENV HERMES_HOME=/opt/data
+RUN mkdir -p /opt/data/{cron,sessions,logs,hooks,memories,skills}
+RUN chmod +x docker/entrypoint.sh
+
+CMD ["bash", "docker/entrypoint.sh", "gateway", "start"]
